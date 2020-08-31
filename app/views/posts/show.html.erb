@@ -1,0 +1,11 @@
+<h1><%= @post.title %></h1>
+<p><b>Blogger: </b><%= link_to @post.blogger.name, blogger_path(@post.blogger) %></p>
+<p><b>Destination: </b><%= link_to @post.destination.name, destination_path(@post.destination) %></p>
+<%= @post.content %></p>
+<%= @post.likes %><%# button_to "Like", post_path(@post), method: :patch, params: { :post => {:likes => (@post.likes +1)}} %>
+<br>
+<br>
+<%= form_for @post do |f| %>
+    <%= f.hidden_field :likes, value: @post.likes + 1%>
+    <%= f.button "Like"%>
+<% end %>
